@@ -1,0 +1,1 @@
+/usr/bin/cc -Wl,--dependency-file=CMakeFiles/anotherBashShell.dir/link.d CMakeFiles/anotherBashShell.dir/main.c.o -o anotherBashShell
