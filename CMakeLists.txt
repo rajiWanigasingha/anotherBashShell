@@ -6,6 +6,11 @@ set(CMAKE_C_STANDARD 11)
 add_executable(anotherBashShell main.c
         helpers/join_str.c
         helpers/join_str.h
+        commands/current_working_dir/current_working_dir.c
+        commands/current_working_dir/current_working_dir.h
+        commands/list_directory/list_directory.c
+        commands/list_directory/list_directory.h
+        helpers/error_another_bash_shell.h
 )
 
 add_executable(tests
