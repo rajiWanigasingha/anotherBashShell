@@ -11,11 +11,15 @@ add_executable(anotherBashShell main.c
         commands/list_directory/list_directory.c
         commands/list_directory/list_directory.h
         helpers/error_another_bash_shell.h
+        commands/file_attributes/file_attributes.c
+        commands/file_attributes/file_attributes.h
 )
 
 add_executable(tests
         tests/join_str_test.c
-        tests/join_str_test.h
         helpers/join_str.c
         helpers/join_str.h
+        commands/file_attributes/file_attributes.c
+        commands/file_attributes/file_attributes.h
+        tests/file_attributes_test.c
 )

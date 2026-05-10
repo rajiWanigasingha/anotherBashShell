@@ -24,7 +24,8 @@ int main(void){
     }
 
     for (int i = 0; i < results.content_size; i++) {
-        printf("File name -> %s/%s\n" ,current_working_dir_value ,results.content[i].name);
+        printf("File name -> %s\n" ,results.content[i].name);
+        printf("File path -> %s\n" ,results.content[i].path);
         if (results.content[i].fileType == FILETYPE_FILE) {
             printf("File type -> a regular file\n");
         } else if (results.content[i].fileType == FILETYPE_DIRECTORY) {

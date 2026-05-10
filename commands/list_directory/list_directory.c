@@ -11,6 +11,8 @@
 #include <string.h>
 #include <sys/stat.h>
 
+#include "../../helpers/join_str.h"
+
 ListDirectoryResult list_directory(const char* dir_path) {
     DIR* dir_stream = opendir(dir_path);
 
@@ -63,6 +65,7 @@ ListDirectoryResult list_directory(const char* dir_path) {
 
         const ContentOfDirectory entry = {
             .name = dir_entry->d_name,
+            .path = join_str(2 ,'/' ,dir_path ,dir_entry->d_name),
             .fileType = type
         };
 

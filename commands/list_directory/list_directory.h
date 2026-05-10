@@ -14,6 +14,7 @@ enum FileType {
 
 struct ContentOfDirectory {
     char *name;
+    char *path;
     char fileType;
 };
 

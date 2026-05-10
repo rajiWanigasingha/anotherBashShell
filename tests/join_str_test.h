@@ -1,8 +1,0 @@
-//
-// Created by rajindawanigasingha on 5/10/26.
-//
-
-#ifndef ANOTHERBASHSHELL_JOIN_STR_TEST_H
-#define ANOTHERBASHSHELL_JOIN_STR_TEST_H
-
-#endif //ANOTHERBASHSHELL_JOIN_STR_TEST_H
