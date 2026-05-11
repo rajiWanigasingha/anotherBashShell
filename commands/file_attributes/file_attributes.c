@@ -46,7 +46,7 @@ Attributes file_attributes(const char* file_name){
         file_type_in_stat = FILETYPE_REG_FILE;
     }
     else if (S_ISDIR(file_stat.st_mode)) {
-        file_type_in_stat = FILETYPE_DIRECTORY;
+        file_type_in_stat = FILETYPE_DIR;
     }
     else if (S_ISLNK(file_stat.st_mode)) {
         file_type_in_stat = FILETYPE_SYMLINK;

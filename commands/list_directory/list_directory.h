@@ -9,7 +9,7 @@
 
 enum FileType {
     FILETYPE_FILE,
-    FILETYPE_DIRECTORY
+    FILETYPE_DIRECTORY,
 };
 
 struct ContentOfDirectory {

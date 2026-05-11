@@ -82,45 +82,6 @@ ListDirectoryResult list_directory(const char* dir_path) {
         content[current_file_index] = entry;
 
         current_file_index++;
-
-
-        // struct stat file_stat;
-        //
-        // char *temp = current_working_dir_value;
-        //
-        // char *current_file_or_folder_name = join_str(2 ,'/' ,temp ,dir_entry->d_name);
-        //
-        // printf("Current file or folder name -> %s\n" ,current_file_or_folder_name);
-        //
-        // if (stat(current_file_or_folder_name ,&file_stat) == -1) {
-        //     printf("Error: %s\n", strerror(errno));
-        //     continue;
-        // }
-        //
-        // char *size_extension = "Bytes";
-        // double size_of_file_in_readable_format;
-        // size_t size_of_file_in_bytes = file_stat.st_size;
-        //
-        // if (size_of_file_in_bytes < 1024) {
-        //     size_of_file_in_readable_format = (double)size_of_file_in_bytes;
-        // } else if (size_of_file_in_bytes < 1024 * 1024) {
-        //     size_of_file_in_readable_format = (double)size_of_file_in_bytes / 1024;
-        //     size_extension = "KB";
-        // } else if (size_of_file_in_bytes < 1024 * 1024 * 1024) {
-        //     size_of_file_in_readable_format = (double)size_of_file_in_bytes / (1024 * 1024);
-        //     size_extension = "MB";
-        // } else {
-        //     size_of_file_in_readable_format = (double)size_of_file_in_bytes / (1024 * 1024 * 1024);
-        //     size_extension = "GB";
-        // }
-        //
-        // printf("File name -> %s\n" ,dir_entry->d_name);
-        // printf("File permission -> %o\n" ,file_stat.st_mode);
-        // printf("File belong to -> %d\n" ,file_stat.st_uid);
-        // printf("File size -> %.3f %s\n" ,size_of_file_in_readable_format ,size_extension);
-        // printf("___________________________________________________\n");
-        //
-        // free(current_file_or_folder_name);
     }
 
     if (errno == EBADF) {

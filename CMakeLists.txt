@@ -13,6 +13,8 @@ add_executable(anotherBashShell main.c
         helpers/error_another_bash_shell.h
         commands/file_attributes/file_attributes.c
         commands/file_attributes/file_attributes.h
+        helpers/readable_bytes.c
+        helpers/readable_bytes.h
 )
 
 add_executable(tests
