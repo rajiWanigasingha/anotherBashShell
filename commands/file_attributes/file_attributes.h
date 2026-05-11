@@ -5,6 +5,7 @@
 #ifndef ANOTHERBASHSHELL_FILE_ATTRIBUTES_H
 #define ANOTHERBASHSHELL_FILE_ATTRIBUTES_H
 #include <stddef.h>
+#include <time.h>
 
 enum FileTypeInStat {
     FILETYPE_REG_FILE,
@@ -32,10 +33,19 @@ struct FilePermissions {
 
 typedef struct FilePermissions FilePermissions;
 
+struct FileTime {
+    struct tm *last_access;
+    struct tm *last_modified;
+    struct tm *last_change;
+};
+
+typedef struct FileTime FileTime;
+
 struct FileAttributes {
     FileTypeInStat type;
     FilePermissions permissions;
     size_t size;
+    FileTime time;
 };
 
 typedef struct FileAttributes FileAttributes;

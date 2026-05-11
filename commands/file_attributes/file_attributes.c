@@ -7,6 +7,7 @@
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 #include <sys/stat.h>
 
 #include "../../helpers/error_another_bash_shell.h"
@@ -72,9 +73,16 @@ FileAttributes file_attributes(char* file_name){
         }
     };
 
+    const FileTime time = {
+        .last_access = gmtime(&file_stat.st_atime),
+        .last_modified = gmtime(&file_stat.st_mtime),
+        .last_change = gmtime(&file_stat.st_ctime)
+    };
+
     return (FileAttributes){
         .type = file_type_in_stat,
         .permissions = file_permissions,
-        .size = file_stat.st_size
+        .size = file_stat.st_size,
+        .time = time
     };
 }
