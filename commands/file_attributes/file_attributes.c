@@ -12,29 +12,32 @@
 
 #include "../../helpers/error_another_bash_shell.h"
 
-FileAttributes file_attributes(char* file_name){
+Attributes file_attributes(const char* file_name){
     struct stat file_stat;
 
     if (stat(file_name, &file_stat) == -1) {
         switch (errno) {
         case EACCES:
-            ERR_PERMISSION_DENIED_FOR_PATH;
-            printf("%s\n",ERR_PERMISSION_DENIED_FOR_PATH.error_message);
-            break;
+            return (Attributes){
+                .is_ok = 0,
+                .error = ERR_PERMISSION_DENIED_FOR_PATH.error_message,
+            };
         case ENOENT:
-            ERR_PATH_NOT_FOUND;
-            printf("%s\n",ERR_PATH_NOT_FOUND.error_message);
-            break;
+            return (Attributes){
+                .is_ok = 0,
+                .error = ERR_PATH_NOT_FOUND.error_message,
+            };
         case ENOTDIR:
-            ERR_PATH_IS_NOT_A_ABSOLUTE_PATH;
-            printf("%s\n",ERR_PATH_IS_NOT_A_ABSOLUTE_PATH.error_message);
-            break;
+            return (Attributes){
+                .is_ok = 0,
+                .error = ERR_PATH_IS_NOT_A_ABSOLUTE_PATH.error_message,
+            };
         default:
-            ERR_FAILED_TO_GET_FILE_ATTRIBUTES;
-            printf("%s\n",ERR_FAILED_TO_GET_FILE_ATTRIBUTES.error_message);
-            break;
+            return (Attributes){
+                .is_ok = 0,
+                .error = ERR_FAILED_TO_GET_FILE_ATTRIBUTES.error_message,
+            };
         }
-        printf("Error: %s\n", strerror(errno));
     }
 
     FileTypeInStat file_type_in_stat = {};
@@ -55,7 +58,7 @@ FileAttributes file_attributes(char* file_name){
         file_type_in_stat = FILETYPE_FIFO;
     }
 
-    FilePermissions file_permissions = {
+    const FilePermissions file_permissions = {
         .owner = (PermissionBits){
             .read = file_stat.st_mode & S_IRUSR,
             .write = file_stat.st_mode & S_IWUSR,
@@ -79,10 +82,22 @@ FileAttributes file_attributes(char* file_name){
         .last_change = gmtime(&file_stat.st_ctime)
     };
 
-    return (FileAttributes){
+    const FileOwnerId owner = {
+        .owner = file_stat.st_uid,
+        .group = file_stat.st_gid
+    };
+
+    const FileAttributes file_attributes = {
         .type = file_type_in_stat,
         .permissions = file_permissions,
         .size = file_stat.st_size,
-        .time = time
+        .time = time,
+        .owner = owner
+    };
+
+    return (Attributes){
+        .is_ok = 1,
+        .error = NULL,
+        .attributes = file_attributes
     };
 }
