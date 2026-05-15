@@ -34,4 +34,6 @@ add_executable(tests
         commands/list_directory/list_directory.h
         commands/list_directory/list_directory.c
         tests/file_attributes_test.c
+        commands/walking_dir/walking_dir.c
+        commands/walking_dir/walking_dir.h
 )
