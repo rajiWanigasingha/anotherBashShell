@@ -22,7 +22,10 @@ int main() {
     // file_attributes("/home/rajindawanigasingha/anotherBashShell");
 
     create_cache_dir();
+    cache_files("/home/rajindawanigasingha/");
     cache_files("/home/rajindawanigasingha/dev");
+    cache_files("/home/rajindawanigasingha/.cache");
+    cache_files("/home/rajindawanigasingha/.config");
 
     return 0;
 }

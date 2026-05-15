@@ -19,6 +19,8 @@ add_executable(anotherBashShell main.c
         helpers/b_tree.h
         commands/cache/cache.c
         commands/cache/cache.h
+        commands/walking_dir/walking_dir.c
+        commands/walking_dir/walking_dir.h
 )
 
 add_executable(tests
