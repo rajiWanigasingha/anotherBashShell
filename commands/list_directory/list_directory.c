@@ -64,7 +64,7 @@ ListDirectoryResult list_directory(const char* dir_path) {
         }
 
         const ContentOfDirectory entry = {
-            .name = dir_entry->d_name,
+            .name = strdup(dir_entry->d_name),
             .path = join_str(2 ,'/' ,dir_path ,dir_entry->d_name),
             .fileType = type
         };
